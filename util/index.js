@@ -1,3 +1,4 @@
+const os = require('os');
 const Util = {
 
   //Response message mapper
@@ -37,7 +38,8 @@ const Util = {
   calcBuffer: (command) => {
     return "TODO"
   },
-
+  handlePorts: port => (os.type().toLowerCase().split('linux').length > 1) ? `/dev/tty${port}` : `COM${port}`,
+  
   handleWinPorts: port => `COM${port}`,
 
   //TODO

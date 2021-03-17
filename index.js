@@ -11,7 +11,7 @@ class MT166 {
         this.connected = false;
         this.reading = false;
         this.options = Object.assign(default_options, options)
-        this.port = new SerialPort(Util.handleWinPorts(this.options.port), { baudRate: this.options.baudRate, autoOpen: false })
+        this.port = new SerialPort(Util.handlePorts(this.options.port), { baudRate: this.options.baudRate, autoOpen: false })
         if (options.autoDiscovery) {
             this.autoDiscoveryConnection(1, 20);
         } else {
@@ -35,7 +35,7 @@ class MT166 {
         }
         console.log(`Trying to connect in port #${startPort}...`)
         this.options.port = startPort;
-        this.port = new SerialPort(Util.handleWinPorts(startPort), { baudRate: this.options.baudRate, autoOpen: false })
+        this.port = new SerialPort(Util.handlePorts(startPort), { baudRate: this.options.baudRate, autoOpen: false })
         this.port.open((err) => {
             if (err) {
                 console.log(`Error opening port ${startPort}: ${err}`)
